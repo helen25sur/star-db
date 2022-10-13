@@ -1,0 +1,6 @@
+.item-list-component .list-group-item {
+  width: 75%;
+  margin-bottom: 5px;
+  border-bottom: 2px solid #15072a;
+  border-radius: 5px;
+}

@@ -1,0 +1,17 @@
+.person-detail-card {
+  padding: 1rem;
+  flex-direction: row;
+}
+
+.person-detail-img {
+  max-width: 33%;
+  margin-right: 1rem;
+}
+
+.card-img {
+  border-radius: 1rem;
+}
+
+.person-detail-list {
+  padding-left: 1rem;
+}

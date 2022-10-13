@@ -1,0 +1,30 @@
+.random-planet-card {
+  padding: 1rem;
+  flex-direction: row;
+}
+
+.random-planet-img {
+  max-width: 25%;
+  margin-right: 1rem;
+}
+
+.card-container {
+  width: 75%;
+}
+
+.card-img {
+  border-radius: 1rem;
+}
+
+.random-planet-list {
+  padding-left: 1rem;
+  width: 50%;
+}
+
+.list-group-item {
+  border-bottom: var(--bs-card-border-width) solid var(--bs-card-border-color);
+}
+
+.term {
+  padding-right: 0.5rem;
+}

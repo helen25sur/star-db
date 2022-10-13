@@ -1,0 +1,15 @@
+.header {
+  padding: 1rem;
+  padding-bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.logo {
+  margin-right: 15%;
+}
+
+.logo-title {
+  text-decoration: none;
+}

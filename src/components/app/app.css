@@ -1,0 +1,26 @@
+.App {
+  padding: 1rem 0;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-areas:
+    "header header"
+    "planet planet"
+    "list detail";
+  gap: 2rem;
+}
+
+.header {
+  grid-area: header;
+}
+
+.random-planet {
+  grid-area: planet;
+}
+
+.item-list-component {
+  grid-area: list;
+}
+
+.person-detail {
+  grid-area: detail;
+}
