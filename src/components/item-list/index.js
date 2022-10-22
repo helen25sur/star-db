@@ -1,47 +1,49 @@
 import { Component } from 'react';
 import './item-list.css';
 
-import SwapiService from '../../services/swapi-service';
 import Loader from '../loader';
 
 export default class ItemList extends Component {
 
-  swapiService = new SwapiService();
-
   state = {
-    peopleList: null,
-    loading: false
+    itemList: null, // не забыть изменить
+    loading: false,
   }
 
   componentDidMount() {
-    this.swapiService
-      .getAllPeople()
-      .then((peopleList) => {
+
+    const { getData } = this.props;
+
+    getData()
+      .then((itemList) => {
         this.setState({
-          peopleList: peopleList,
+          itemList: itemList,
           loading: true
         });
         console.log(this.state);
       })
   }
 
+
+
   renderItems = (arr) => {
-    return arr.map(({ id, name, birthYear }) => {
+    return arr.map((item) => {
+      const label = this.props.children(item)
       return (
-        <li key={id}
+        <li key={item.id}
           className="list-group-item"
-          onClick={() => this.props.onItemSelected(id)}>
-          <span className='name'>{name} </span>
-          <span className='details'>({birthYear})</span>
+          onClick={() => this.props.onItemSelected(item.id)}>
+          {/* <span className='name'>{item.name} </span> */}
+          {label}
         </li>
       )
     })
   }
 
   render() {
-    const { peopleList, loading } = this.state;
-
-    const content = !loading ? <Loader /> : this.renderItems(peopleList);
+    const { itemList, loading } = this.state;
+    console.log(itemList);
+    const content = !loading ? <Loader /> : this.renderItems(itemList); // и тут уже itemList, а не personList
 
     return (
       <ul className="list-group item-list-component">

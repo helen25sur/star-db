@@ -5,7 +5,9 @@
   grid-template-areas:
     "header header"
     "planet planet"
-    "list detail";
+    "list detail"
+    "list-planet detail-planet"
+    "list-ships detail-ship";
   gap: 2rem;
 }
 
@@ -24,3 +26,19 @@
 .person-detail {
   grid-area: detail;
 }
+
+.item-list-component:nth-of-type(2) {
+  grid-area: list-planet;
+}
+
+/* .person-detail:nth-of-type(2) {
+  grid-area: detail-planet;
+} */
+
+.item-list-component:nth-of-type(3) {
+  grid-area: list-ships;
+}
+
+/* .person-detail:nth-of-type(3) {
+  grid-area: detail-ship;
+} */

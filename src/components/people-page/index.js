@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
-import ErrorIndicator from '../error-indicator';
+// import ErrorIndicator from '../error-indicator';
 import ItemList from '../item-list';
 import PersonDetail from '../person-details';
 import './people-page.css';
+import SwapiService from '../../services/swapi-service';
+import ErrorBoundry from '../error-boundry';
 
 
 export default class PeoplePage extends Component {
 
-  state = {
-    selectedPerson: 3,
-    hasError: false
-  }
+  swapiService = new SwapiService();
 
-  componentDidCatch() {
-    this.setState({ hasError: true });
+  state = {
+    selectedPerson: 3
   }
 
   onPersonSelected = (id) => {
@@ -24,12 +23,20 @@ export default class PeoplePage extends Component {
   }
 
   render() {
-    if (this.state.hasError) return <ErrorIndicator />;
-
     return (
       <React.Fragment>
-        <ItemList onItemSelected={this.onPersonSelected} />
-        <PersonDetail personId={this.state.selectedPerson} />
+        <ItemList
+          getData={this.swapiService.getAllPeople}
+          onItemSelected={this.onPersonSelected}>
+          {(i) => {
+            return (
+              <span>{i.name} ({i.birthYear})</span>
+            )
+          }}
+        </ItemList>
+        <ErrorBoundry>
+          <PersonDetail personId={this.state.selectedPerson} />
+        </ErrorBoundry>
 
       </React.Fragment>
     )
