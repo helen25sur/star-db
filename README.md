@@ -1,4 +1,26 @@
-# Lifecycle hooks
+## Scheme of this app
+
+
+    <App>
+      <Header />
+      <RandomPlanet />
+
+      <PeoplePage>
+        <ItemList /> <PersonDetail />
+      </PeoplePage>
+
+      <PlanetPage>
+        <ItemList /> <PlanetDetail />
+      </PlanetPage>
+
+      <StarshipPage>
+        <ItemList /> <StarshipDetail />
+      </StarshipPage>
+
+    </Root>
+
+
+## Lifecycle hooks
 
 ## MOUNTING
 ------
@@ -9,7 +31,7 @@
 -------
     New Props
 
-              => render() => componentDidUpdate()
+              => render() => componentDidUpdate(prevProps, prevState)
 
     setState()
 
