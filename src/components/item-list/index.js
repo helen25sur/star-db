@@ -1,54 +1,44 @@
-import { Component } from 'react';
+import withData from '../helper/hoc/with-data';
 import './item-list.css';
 
-import Loader from '../loader';
 
-export default class ItemList extends Component {
+import SwapiService from '../../services/swapi-service';
 
-  state = {
-    itemList: null, // не забыть изменить
-    loading: false,
-  }
+const ItemList = (props) => {
 
-  componentDidMount() {
+  const { itemList, onItemSelected, children: renderLabel } = props;
 
-    const { getData } = this.props;
-
-    getData()
-      .then((itemList) => {
-        this.setState({
-          itemList: itemList,
-          loading: true
-        });
-        console.log(this.state);
-      })
-  }
-
-
-
-  renderItems = (arr) => {
-    return arr.map((item) => {
-      const label = this.props.children(item)
-      return (
-        <li key={item.id}
-          className="list-group-item"
-          onClick={() => this.props.onItemSelected(item.id)}>
-          {/* <span className='name'>{item.name} </span> */}
-          {label}
-        </li>
-      )
-    })
-  }
-
-  render() {
-    const { itemList, loading } = this.state;
-    console.log(itemList);
-    const content = !loading ? <Loader /> : this.renderItems(itemList); // и тут уже itemList, а не personList
-
+  const items = itemList.map((item) => {
+    const { id } = item;
+    const label = renderLabel(item);
     return (
-      <ul className="list-group item-list-component">
-        {content}
-      </ul>
+      <li key={id}
+        className="list-group-item"
+        onClick={() => onItemSelected(id)}>
+        {/* <span className='name'>{item.name} </span> */}
+        {label}
+      </li>
     )
-  }
+
+  })
+
+  return (
+    <ul className="list-group item-list-component">
+      {items}
+    </ul>
+    // const { loading } = this.state;
+    // const { itemList } = this.props;
+
+    // const content = this.renderItems(itemList); // и тут уже itemList, а не personList
+
+    // return (
+    //   <ul className="list-group item-list-component">
+    //     {content}
+    //   </ul>
+    // )
+  )
 }
+
+const { getAllPeople } = new SwapiService();
+
+export default withData(ItemList, getAllPeople)

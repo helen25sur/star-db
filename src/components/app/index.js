@@ -8,6 +8,7 @@ import Container from '../container';
 
 import SwapiService from '../../services/swapi-service';
 import ErrorBoundry from '../error-boundry';
+import ItemList from '../item-list';
 
 export default class App extends Component {
 
@@ -19,7 +20,7 @@ export default class App extends Component {
 
   render() {
 
-    const { getPerson, getStarship, getPersonImage, getStarshipImage } = this.swapiService;
+    const { getPerson, getAllPeople, getStarship, getPersonImage, getStarshipImage } = this.swapiService;
 
     const random = (<RandomPlanet />);
     const detailPerson = (
@@ -44,14 +45,23 @@ export default class App extends Component {
       </ItemDetail>
 
     );
+
+    const list = (
+      <ItemList getData={getAllPeople}>
+        {(i) => {
+          return (
+            <span>{i.name} ({i.birthYear})</span>
+          )
+        }}
+      </ItemList>)
     return (
       <ErrorBoundry>
         <div className='App container' >
           <Header />
           <Container
             first={random}
-            second={detailPerson}
-            third={detailStarship}
+            second={list}
+            third={detailPerson}
           />
         </div>
       </ErrorBoundry>
