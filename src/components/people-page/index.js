@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import ErrorIndicator from '../error-indicator';
 import ItemList from '../item-list';
-import PersonDetail from '../person-details';
+import PersonDetail from '../item-details';
 import './people-page.css';
 import SwapiService from '../../services/swapi-service';
 import ErrorBoundry from '../error-boundry';

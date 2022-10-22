@@ -1,13 +1,10 @@
+import React, { Component } from 'react';
 import './app.css';
 
 import Header from '../header';
 import RandomPlanet from '../random-planet';
-
-import React, { Component } from 'react';
-// import ErrorIndicator from '../error-indicator';
-import PeoplePage from '../people-page';
-import ItemList from '../item-list';
-import PersonDetail from '../person-details';
+import ItemDetail, { Record } from '../item-details';
+import Container from '../container';
 
 import SwapiService from '../../services/swapi-service';
 import ErrorBoundry from '../error-boundry';
@@ -22,45 +19,40 @@ export default class App extends Component {
 
   render() {
 
+    const { getPerson, getStarship, getPersonImage, getStarshipImage } = this.swapiService;
+
+    const random = (<RandomPlanet />);
+    const detailPerson = (
+      <ItemDetail
+        getData={getPerson}
+        getImageUrl={getPersonImage}
+        itemId={11} >
+        <Record field="gender" label="Gender" />
+        <Record field="birthYear" label="Birth year" />
+        <Record field="eyeColor" label="Eye color" />
+      </ItemDetail>
+    );
+
+    const detailStarship = (
+      <ItemDetail
+        getData={getStarship}
+        getImageUrl={getStarshipImage}
+        itemId={5}>
+        <Record field="model" label="Model" />
+        <Record field="costInCredits" label="Cost" />
+        <Record field="length" label="Length" />
+      </ItemDetail>
+
+    );
     return (
       <ErrorBoundry>
         <div className='App container' >
           <Header />
-          <RandomPlanet />
-          <PeoplePage />
-
-          <React.Fragment>
-            <ItemList
-              getData={this.swapiService.getAllPlanets}
-            // onItemSelected={this.onPersonSelected} 
-            >
-              {(i) => {
-                return (
-                  <span>{i.name} ({i.diameter})</span>
-                )
-              }}
-            </ItemList>
-            <PersonDetail />
-
-          </React.Fragment>
-
-          <React.Fragment>
-            <ItemList
-              getData={this.swapiService.getAllStarships}
-            // onItemSelected={this.onPersonSelected} 
-            >
-              {(i) => {
-                return (
-                  <span>{i.name} ({i.length})</span>
-                )
-              }}
-            </ItemList>
-            <ErrorBoundry>
-              <PersonDetail />
-            </ErrorBoundry>
-
-          </React.Fragment>
-
+          <Container
+            first={random}
+            second={detailPerson}
+            third={detailStarship}
+          />
         </div>
       </ErrorBoundry>
     )
