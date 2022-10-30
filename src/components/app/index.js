@@ -3,12 +3,19 @@ import './app.css';
 
 import Header from '../header';
 import RandomPlanet from '../random-planet';
-import ItemDetail, { Record } from '../item-details';
 import Container from '../container';
 
 import SwapiService from '../../services/swapi-service';
 import ErrorBoundry from '../error-boundry';
-import ItemList from '../item-list';
+
+import {
+  PersonList,
+  PlanetList,
+  StarshipList,
+  PersonDetails,
+  PlanetDetails,
+  StarshipDetails
+} from '../sdb-components';
 
 export default class App extends Component {
 
@@ -20,50 +27,33 @@ export default class App extends Component {
 
   render() {
 
-    const { getPerson, getAllPeople, getStarship, getPersonImage, getStarshipImage } = this.swapiService;
+    const personList = (
+      <PersonList
+        onItemSelected={(id) => console.log('Selected:', id)}>
+        {({ name, birthYear }) => <span>{name} ({birthYear})</span>}
+      </PersonList>);
+    const planetList = (<PlanetList>
+      {({ name }) => <span>{name}</span>}
+    </PlanetList>);
+    const starshipList = (<StarshipList>
+      {({ name }) => <span>{name}</span>}
+    </StarshipList>);
 
-    const detailPerson = (
-      <ItemDetail
-        getData={getPerson}
-        getImageUrl={getPersonImage}
-        itemId={11} >
-        <Record field="gender" label="Gender" />
-        <Record field="birthYear" label="Birth year" />
-        <Record field="eyeColor" label="Eye color" />
-      </ItemDetail>
-    );
-
-    const detailStarship = (
-      <ItemDetail
-        getData={getStarship}
-        getImageUrl={getStarshipImage}
-        itemId={5}>
-        <Record field="model" label="Model" />
-        <Record field="costInCredits" label="Cost" />
-        <Record field="length" label="Length" />
-      </ItemDetail>
-
-    );
-
-    const list = (
-      <ItemList
-        onItemSelected={(id) => console.log('Selected:', id)}
-        getData={getAllPeople}>
-        {(i) => {
-          return (
-            <span>{i.name} ({i.birthYear})</span>
-          )
-        }}
-      </ItemList>)
     return (
       <ErrorBoundry>
         <div className='App container' >
           <Header />
+
           <Container
             first={<RandomPlanet />}
-            second={list}
-            third={detailPerson}
-          />
+            second={personList}
+            third={<PersonDetails itemId={4} />} />
+
+          <Container
+            first={<StarshipDetails itemId={9} />}
+            second={planetList}
+            third={starshipList} />
+
         </div>
       </ErrorBoundry>
     )

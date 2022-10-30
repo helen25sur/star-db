@@ -12,12 +12,13 @@ const withData = (View, getData) => {
           this.setState({
             data: data
           });
-          console.log(this.state);
+          console.log('withData', this.state.data);
         })
     }
 
     render() {
       const { data } = this.state;
+      console.log('withData', '21', data);
       if (!data) return <Loader />;
       return (
         <View {... this.props} data={data} />
