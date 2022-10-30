@@ -22,7 +22,6 @@ export default class App extends Component {
 
     const { getPerson, getAllPeople, getStarship, getPersonImage, getStarshipImage } = this.swapiService;
 
-    const random = (<RandomPlanet />);
     const detailPerson = (
       <ItemDetail
         getData={getPerson}
@@ -47,7 +46,9 @@ export default class App extends Component {
     );
 
     const list = (
-      <ItemList getData={getAllPeople}>
+      <ItemList
+        onItemSelected={(id) => console.log('Selected:', id)}
+        getData={getAllPeople}>
         {(i) => {
           return (
             <span>{i.name} ({i.birthYear})</span>
@@ -59,7 +60,7 @@ export default class App extends Component {
         <div className='App container' >
           <Header />
           <Container
-            first={random}
+            first={<RandomPlanet />}
             second={list}
             third={detailPerson}
           />

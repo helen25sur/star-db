@@ -3,34 +3,27 @@ import Loader from '../../loader';
 
 const withData = (View, getData) => {
   return class extends Component {
-
     state = {
-      itemList: null, // не забыть изменить
+      data: null,
     }
-
     componentDidMount() {
-
       getData()
-        .then((itemList) => {
+        .then((data) => {
           this.setState({
-            itemList: itemList
+            data: data
           });
           console.log(this.state);
         })
     }
 
-
     render() {
-      const { itemList } = this.state;
-
-      if (!itemList) return <Loader />;
-
+      const { data } = this.state;
+      if (!data) return <Loader />;
       return (
-        <View {...this.props} itemList={itemList} />
-
+        <View {... this.props} data={data} />
       )
     }
-  };
+  }
 }
 
 export default withData;

@@ -1,1 +1,0 @@
-import './starship-details.css';

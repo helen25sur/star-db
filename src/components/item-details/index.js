@@ -50,13 +50,13 @@ export default class ItemDetail extends Component {
     if (!this.state.item) return <span>Select an item from a list!</span>;
 
     const { name } = this.state.item;
-    console.log(this.props.children);
+
     // const content = this.state.loading ? <Person person={this.state.person} /> : <Loader />
     return (
       <div className='person-detail'>
         <div className="card border-dark mb-3 person-detail-card">
           <div className='person-detail-img'>
-            <img src={this.state.image} className="card-img" alt="person"></img>
+            <img src={this.state.image} className="card-img" alt="item"></img>
           </div>
           <div className='card-container'>
             <div className="card-header">
