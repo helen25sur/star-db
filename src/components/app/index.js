@@ -27,18 +27,6 @@ export default class App extends Component {
 
   render() {
 
-    const personList = (
-      <PersonList
-        onItemSelected={(id) => console.log('Selected:', id)}>
-        {({ name, birthYear }) => <span>{name} ({birthYear})</span>}
-      </PersonList>);
-    const planetList = (<PlanetList>
-      {({ name }) => <span>{name}</span>}
-    </PlanetList>);
-    const starshipList = (<StarshipList>
-      {({ name }) => <span>{name}</span>}
-    </StarshipList>);
-
     return (
       <ErrorBoundry>
         <div className='App container' >
@@ -46,17 +34,16 @@ export default class App extends Component {
 
           <Container
             first={<RandomPlanet />}
-            second={personList}
+            second={<PersonList />}
             third={<PersonDetails itemId={4} />} />
 
           <Container
             first={<StarshipDetails itemId={9} />}
-            second={planetList}
-            third={starshipList} />
+            second={<PlanetList />}
+            third={<StarshipList />} />
 
         </div>
       </ErrorBoundry>
     )
-
   }
 }
