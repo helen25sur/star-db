@@ -8,6 +8,8 @@ import Container from '../container';
 import SwapiService from '../../services/swapi-service';
 import ErrorBoundry from '../error-boundry';
 
+import { SwapiServiceProvider } from '../swapi-service-context';
+
 import {
   PersonList,
   PlanetList,
@@ -25,24 +27,36 @@ export default class App extends Component {
     selectedItem: 3
   }
 
+  onItemSelected = (id) => {
+    this.setState({
+      selectedItem: id
+    })
+  }
+
   render() {
 
     return (
       <ErrorBoundry>
-        <div className='App container' >
-          <Header />
+        <SwapiServiceProvider value={this.swapiService}>
+          <div className='App container' >
+            <Header />
 
-          <Container
-            first={<RandomPlanet />}
-            second={<PersonList />}
-            third={<PersonDetails itemId={4} />} />
+            <Container
+              first={<RandomPlanet />}
+              second={<PersonList onItemSelected={this.onItemSelected} />}
+              third={<PersonDetails itemId={this.state.selectedItem} />} />
 
-          <Container
-            first={<StarshipDetails itemId={9} />}
-            second={<PlanetList />}
-            third={<StarshipList />} />
+            <Container
+              first={null}
+              second={<PlanetList />}
+              third={<PlanetDetails itemId={3} />} />
 
-        </div>
+            <Container
+              first={null}
+              second={<StarshipList />}
+              third={<StarshipDetails itemId={9} />} />
+          </div>
+        </SwapiServiceProvider>
       </ErrorBoundry>
     )
   }

@@ -44,6 +44,7 @@ export default class ItemDetail extends Component {
           image: getImageUrl(item)
         })
       })
+      .catch(this.onError)
   }
 
   render() {
