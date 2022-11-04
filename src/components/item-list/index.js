@@ -24,5 +24,9 @@ const ItemList = (props) => {
   )
 }
 
+ItemList.defaultProps = {
+  onItemSelected: () => { console.log('Didn\'t get onItemSelected'); }
+}
+
 export default ItemList;
 

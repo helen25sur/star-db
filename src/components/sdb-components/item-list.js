@@ -17,39 +17,39 @@ const renderNameBithYear = ({ name, birthYear }) => <span>{name} ({birthYear})</
 const renderModelName = ({ name, model }) => <span>{name} ({model})</span>;
 const renderNameDiameter = ({ name, diameter }) => <span>{name} ({diameter})</span>;
 
-const PersonList = () => {
+const PersonList = (props) => {
   return (
     <SwapiServiceConsumer>
       {({ getAllPeople }) => {
         const El = withData(withChildFunction(ItemList, renderNameBithYear), getAllPeople);
         return (
-          <El />
+          <El {...props} />
         )
       }}
     </SwapiServiceConsumer>
   )
 }
 
-const PlanetList = () => {
+const PlanetList = (props) => {
   return (
     <SwapiServiceConsumer>
       {({ getAllPlanets }) => {
         const El = withData(withChildFunction(ItemList, renderNameDiameter), getAllPlanets);
         return (
-          <El />
+          <El {...props} />
         )
       }}
     </SwapiServiceConsumer>
   )
 }
 
-const StarshipList = () => {
+const StarshipList = (props) => {
   return (
     <SwapiServiceConsumer>
       {({ getAllStarships }) => {
         const El = withData(withChildFunction(ItemList, renderModelName), getAllStarships);
         return (
-          <El />
+          <El {...props} />
         )
       }}
     </SwapiServiceConsumer>

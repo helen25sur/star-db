@@ -16,10 +16,10 @@ export default class Header extends Component {
               <a className="nav-link " data-bs-toggle="tab" href="/" aria-selected="false" role="tab">People</a>
             </li>
             <li className="nav-item" role="presentation">
-              <a className="nav-link" data-bs-toggle="tab" href="/" aria-selected="false" role="tab" >Planets</a>
+              <a className="nav-link" data-bs-toggle="tab" href="/planet" aria-selected="false" role="tab" >Planets</a>
             </li>
             <li className="nav-item" role="presentation">
-              <a className="nav-link" href="/" aria-selected="false" role="tab">Starships</a>
+              <a className="nav-link" href="/starships" aria-selected="false" role="tab">Starships</a>
             </li>
           </ul>
         </nav>
