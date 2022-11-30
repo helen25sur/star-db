@@ -1,7 +1,6 @@
 import ItemList from '../item-list';
 import withData from '../helper/hoc/with-data';
-
-import { SwapiServiceConsumer } from '../swapi-service-context';
+import withSwapiService from '../helper/hoc/with-swapi-service';
 
 const withChildFunction = (Wrapped, fn) => {
   return (props) => {
@@ -17,52 +16,30 @@ const renderNameBithYear = ({ name, birthYear }) => <span>{name} ({birthYear})</
 const renderModelName = ({ name, model }) => <span>{name} ({model})</span>;
 const renderNameDiameter = ({ name, diameter }) => <span>{name} ({diameter})</span>;
 
-const PersonList = (props) => {
-  return (
-    <SwapiServiceConsumer>
-      {({ getAllPeople }) => {
-        const El = withData(withChildFunction(ItemList, renderNameBithYear), getAllPeople);
-        return (
-          <El {...props} />
-        )
-      }}
-    </SwapiServiceConsumer>
-  )
-}
+const PersonList = withSwapiService(
+  withData(withChildFunction(ItemList, renderNameBithYear)),
+  (swapiService) => {
+    return {
+      getData: swapiService.getAllPeople,
+    }
+});
 
-const PlanetList = (props) => {
-  return (
-    <SwapiServiceConsumer>
-      {({ getAllPlanets }) => {
-        const El = withData(withChildFunction(ItemList, renderNameDiameter), getAllPlanets);
-        return (
-          <El {...props} />
-        )
-      }}
-    </SwapiServiceConsumer>
-  )
-}
+const PlanetList = withSwapiService(
+  withData(withChildFunction(ItemList, renderNameDiameter)), 
+  (swapiService) => {
+    return {
+      getData: swapiService.getAllPlanets,
+    }
+  }
+);
 
-const StarshipList = (props) => {
-  return (
-    <SwapiServiceConsumer>
-      {({ getAllStarships }) => {
-        const El = withData(withChildFunction(ItemList, renderModelName), getAllStarships);
-        return (
-          <El {...props} />
-        )
-      }}
-    </SwapiServiceConsumer>
-  )
-}
-
-
-// const PlanetList = withData(
-//   withChildFunction(ItemList, renderNameDiameter),
-//   getAllPlanets);
-// const StarshipList = withData(
-//   withChildFunction(ItemList, renderModelName),
-//   getAllStarships);
+const StarshipList = withSwapiService(
+  withData(withChildFunction(ItemList, renderModelName)), 
+  (swapiService) => {
+    return {
+      getData: swapiService.getAllStarships,
+    }
+  });
 
 export {
   PersonList,

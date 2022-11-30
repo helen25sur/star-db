@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import './item-details.css';
 import SwapiService from '../../services/swapi-service';
-// import Loader from '../loader';
 
 export const Record = ({ item, field, label }) => {
   return (
@@ -52,7 +51,6 @@ export default class ItemDetail extends Component {
 
     const { name } = this.state.item;
 
-    // const content = this.state.loading ? <Person person={this.state.person} /> : <Loader />
     return (
       <div className='person-detail'>
         <div className="card border-dark mb-3 person-detail-card">
@@ -71,7 +69,6 @@ export default class ItemDetail extends Component {
                     return React.cloneElement(child, { item: this.state.item });
                   })
                 }
-
               </ul>
             </div>
           </div>

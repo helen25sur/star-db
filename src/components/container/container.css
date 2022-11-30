@@ -18,3 +18,14 @@
 .right {
   grid-area: right;
 }
+
+@media screen and (max-width: 600px) {
+  .grid {
+    grid-template-columns: 80%;
+    grid-template-areas:
+    "full"
+    "right"
+    "left";
+    justify-content: center;
+  }
+}

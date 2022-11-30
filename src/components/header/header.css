@@ -13,3 +13,12 @@
 .logo-title {
   text-decoration: none;
 }
+
+@media screen and (max-width: 550px) {
+  .header {
+    flex-direction: column;
+  }
+  .logo {
+    margin-right: 0;
+  }
+}

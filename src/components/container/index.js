@@ -1,4 +1,5 @@
 import './container.css';
+import PropTypes from 'prop-types';
 
 const Container = ({ first, second, third }) => {
   return (
@@ -14,6 +15,12 @@ const Container = ({ first, second, third }) => {
       </div>
     </div>
   )
+}
+
+Container.propTypes = {
+  first: PropTypes.node,
+  second: PropTypes.node.isRequired,
+  third: PropTypes.node.isRequired
 }
 
 export default Container;

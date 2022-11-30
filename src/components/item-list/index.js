@@ -1,4 +1,5 @@
 import './item-list.css';
+import PropTypes from 'prop-types';
 
 const ItemList = (props) => {
 
@@ -14,7 +15,6 @@ const ItemList = (props) => {
         {label}
       </li>
     )
-
   })
 
   return (
@@ -28,5 +28,10 @@ ItemList.defaultProps = {
   onItemSelected: () => { console.log('Didn\'t get onItemSelected'); }
 }
 
-export default ItemList;
+ItemList.propTypes = {
+  onItemSelected: PropTypes.func,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  children: PropTypes.func.isRequired
+}
 
+export default ItemList;

@@ -4,3 +4,15 @@
   border-bottom: 2px solid #15072a;
   border-radius: 5px;
 }
+
+@media screen and (max-width: 1000px) {
+  .item-list-component .list-group-item {
+    width: 85%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .item-list-component .list-group-item {
+    width: 100%;
+  }
+}

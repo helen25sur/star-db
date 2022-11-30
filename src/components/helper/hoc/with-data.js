@@ -1,13 +1,13 @@
 import { Component } from 'react';
 import Loader from '../../loader';
 
-const withData = (View, getData) => {
+const withData = (View) => {
   return class extends Component {
     state = {
       data: null,
     }
     componentDidMount() {
-      getData()
+      this.props.getData()
         .then((data) => {
           this.setState({
             data: data

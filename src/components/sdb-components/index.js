@@ -5,9 +5,9 @@ import {
 } from './item-list';
 
 import {
-  PersonDetails,
-  PlanetDetails,
-  StarshipDetails
+  PersonDetailsWithContext as PersonDetails,
+  PlanetDetailsWithContext as PlanetDetails,
+  StarshipDetailsWithContext as StarshipDetails,
 } from './details';
 
 export {
