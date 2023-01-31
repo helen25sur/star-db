@@ -30,7 +30,7 @@ export default class App extends Component {
               <Routes>
                 <Route path="/" element={<PeoplePage />} />
                 <Route path="/planet" element={<PlanetPage />} />
-
+                
                 <Route path="/starships" element={<StarshipPage />} />
               </Routes>
 

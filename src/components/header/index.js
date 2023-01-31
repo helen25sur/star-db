@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './header.css';
 
 export default class Header extends Component {
@@ -8,18 +9,18 @@ export default class Header extends Component {
     return (
       <header className='header'>
         <div className='logo'>
-          <h1 className='title'><a href='/' className='text-info logo-title'>Star DB</a></h1>
+          <h1 className='title'><Link to='/' className='text-info logo-title'>Star DB</Link></h1>
         </div>
         <nav>
           <ul className="nav nav-tabs" role="tablist">
             <li className="nav-item" role="presentation">
-              <a className="nav-link " data-bs-toggle="tab" href="/" aria-selected="false" role="tab">People</a>
+              <Link className="nav-link " data-bs-toggle="tab" to="/" aria-selected="false" role="tab">People</Link>
             </li>
             <li className="nav-item" role="presentation">
-              <a className="nav-link" data-bs-toggle="tab" href="/planet" aria-selected="false" role="tab" >Planets</a>
+              <Link className="nav-link" data-bs-toggle="tab" to="/planet/" aria-selected="false" role="tab" >Planets</Link>
             </li>
             <li className="nav-item" role="presentation">
-              <a className="nav-link" href="/starships" aria-selected="false" role="tab">Starships</a>
+              <Link className="nav-link" to="/starships/" aria-selected="false" role="tab">Starships</Link>
             </li>
           </ul>
         </nav>
