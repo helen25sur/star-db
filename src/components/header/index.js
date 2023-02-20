@@ -14,13 +14,13 @@ export default class Header extends Component {
         <nav>
           <ul className="nav nav-tabs" role="tablist">
             <li className="nav-item" role="presentation">
-              <Link className="nav-link " data-bs-toggle="tab" to="/people/" aria-selected="false" role="tab">People</Link>
+              <Link className="nav-link " data-bs-toggle="tab" to="/star-db/people/" aria-selected="false" role="tab">People</Link>
             </li>
             <li className="nav-item" role="presentation">
-              <Link className="nav-link" data-bs-toggle="tab" to="/planet/" aria-selected="false" role="tab" >Planets</Link>
+              <Link className="nav-link" data-bs-toggle="tab" to="/star-db/planet/" aria-selected="false" role="tab" >Planets</Link>
             </li>
             <li className="nav-item" role="presentation">
-              <Link className="nav-link" to="/starships/" aria-selected="false" role="tab">Starships</Link>
+              <Link className="nav-link" to="/star-db/starships/" aria-selected="false" role="tab">Starships</Link>
             </li>
           </ul>
         </nav>

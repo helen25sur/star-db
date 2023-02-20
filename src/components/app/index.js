@@ -28,10 +28,10 @@ export default class App extends Component {
               <RandomPlanet />
 
               <Routes>
-                <Route path="/people" element={<PeoplePage />} />
-                <Route path="/planet" element={<PlanetPage />} />
+                <Route path="/star-db/people" element={<PeoplePage />} />
+                <Route path="/star-db/planet" element={<PlanetPage />} />
                 
-                <Route path="/starships" element={<StarshipPage />} />
+                <Route path="/star-db/starships" element={<StarshipPage />} />
               </Routes>
 
             </div>
