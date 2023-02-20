@@ -9,12 +9,12 @@ export default class Header extends Component {
     return (
       <header className='header'>
         <div className='logo'>
-          <h1 className='title'><Link to='/' className='text-info logo-title'>Star DB</Link></h1>
+          <h1 className='title'><Link to='/star-db/' className='text-info logo-title'>Star DB</Link></h1>
         </div>
         <nav>
           <ul className="nav nav-tabs" role="tablist">
             <li className="nav-item" role="presentation">
-              <Link className="nav-link " data-bs-toggle="tab" to="/" aria-selected="false" role="tab">People</Link>
+              <Link className="nav-link " data-bs-toggle="tab" to="/people/" aria-selected="false" role="tab">People</Link>
             </li>
             <li className="nav-item" role="presentation">
               <Link className="nav-link" data-bs-toggle="tab" to="/planet/" aria-selected="false" role="tab" >Planets</Link>
