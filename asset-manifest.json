@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/star-db/static/css/main.5c59eace.css",
-    "main.js": "/star-db/static/js/main.86c9d1a2.js",
+    "main.js": "/star-db/static/js/main.950ec670.js",
     "index.html": "/star-db/index.html",
     "main.5c59eace.css.map": "/star-db/static/css/main.5c59eace.css.map",
-    "main.86c9d1a2.js.map": "/star-db/static/js/main.86c9d1a2.js.map"
+    "main.950ec670.js.map": "/star-db/static/js/main.950ec670.js.map"
   },
   "entrypoints": [
     "static/css/main.5c59eace.css",
-    "static/js/main.86c9d1a2.js"
+    "static/js/main.950ec670.js"
   ]
 }
